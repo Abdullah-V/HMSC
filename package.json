@@ -1,0 +1,15 @@
+{
+  "name": "HMS",
+  "version": "1.0.0",
+  "description": "HMS(How Many Stuffs) provide you the number of files, folders and lines in the directory (and more)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Abdullah Veliyev",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "minimist": "^1.2.5"
+  }
+}

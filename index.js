@@ -34,16 +34,6 @@ function isEnd(path) {
     }
 }
 
-async function isExcluded(stuff) {
-    var res = false
-    await excludeds.forEach(excld => {
-        if(path.resolve(stuff).startsWith(path.resolve(excld))){
-            res = true
-        }
-    })
-    return res
-}
-
 async function calculateCounts() {
     folderCount -= 1
     // fileCount = onlyFiles.length

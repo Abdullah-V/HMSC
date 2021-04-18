@@ -18,4 +18,18 @@ module.exports = {
     lineCountOfFile(path) {
         return fs.readFileSync(path, 'utf8').split("\n").length
     },
+
+    isExists(path) {
+        return fs.existsSync(path)
+    },
+    
+    getFileExtension(str) {
+        try {
+            if(str[0] === ".") {
+                return false
+            } else {
+                return str.match(/\.[0-9a-z]+$/ig)[0]
+            }
+        } catch(e) { return false }
+    }
 }

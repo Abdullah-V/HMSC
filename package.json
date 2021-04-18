@@ -1,7 +1,7 @@
 {
-  "name": "HMS",
+  "name": "hms",
   "version": "1.0.0",
-  "description": "HMS(How Many Stuffs) provide you the number of files, folders and lines in the directory (and more)",
+  "description": "HMS (How Many Stuffs) provide you count the number of files, folders and lines in the directory (and more)",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -11,5 +11,8 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "minimist": "^1.2.5"
+  },
+  "bin": {
+    "hms": "./index.js"
   }
 }

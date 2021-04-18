@@ -1,0 +1,3 @@
+- [ ] "exclude hidden files" option
+- [ ] file extension analysis
+- [ ] Add image to readme

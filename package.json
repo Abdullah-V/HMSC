@@ -21,11 +21,11 @@
   },
   "homepage": "https://github.com/Abdullah-V/HMSC",
   "keywords": [
-    "hmsc", 
-    "count", 
-    "files", 
-    "folders", 
-    "directory", 
+    "hmsc",
+    "count",
+    "file",
+    "folder",
+    "directory",
     "analyst",
     "cli"
   ]

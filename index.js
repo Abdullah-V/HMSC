@@ -8,14 +8,16 @@ const { isFile, isFolder, lineCountOfFile, isExists, getFileExtension } = requir
 
 
 var 
-    lineCount = 0,
-    folderCount = 0,
-    fileCount = 0,
-    paths = [],
+    lineCount = 0
+    folderCount = 0
+    fileCount = 0
+    paths = []
     readedFolders = []
     givenPath = ""
     excludeds = []
     onlyFiles = []
+    fileExtensions = []
+    uniqueFileExtensions = []
 
 async function readFolder(folder) {
     folderCount++
@@ -49,6 +51,17 @@ async function calculateCounts() {
     })
 }
 
+async function analyzeFileExtensions() {
+    fileExtensions = await onlyFiles.map(file => {
+        return getFileExtension(path.basename(file))
+    })
+    uniqueFileExtensions = [...new Set(fileExtensions)]
+}
+
+function getPercentageOfFileExtension(fe) { // parameter mean file extension
+    return fileExtensions.filter(e => { return e === fe }).length * 100 / fileExtensions.length
+}
+
 async function main(stuff) {
     if(isFile(stuff)) {
         console.log(`\n📄 ${chalk.green(lineCountOfFile(stuff))} ${chalk.blue("line")} in ${chalk.yellow(stuff)} file\n`)
@@ -59,9 +72,10 @@ async function main(stuff) {
     }
     else if(Array.isArray(stuff)){
         if(paths.every(isEnd)){
-            // files = await [...new Set(files)]
             onlyFiles = await paths.filter(isFile) 
             await calculateCounts()
+            await analyzeFileExtensions()
+            // console.log(getPercentageOfFileExtension(".py"))
             console.log(`\n📂 ${chalk.green(folderCount)} ${chalk.blue("folder")};\n\n📄 ${chalk.green(lineCount)} ${chalk.blue("line")} in ${chalk.green(fileCount)} ${chalk.blue("file")}\n\n⭐ inside ${chalk.yellow(givenPath)}\n`)
         }
         else{

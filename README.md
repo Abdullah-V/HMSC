@@ -15,7 +15,7 @@ HMSC (How Many Stuffs CLI) provide you count the number of files, folders and li
 
 ## 📓 Requirements
 - [Node.js](https://nodejs.org/en/download/)
-- [NPM](https://nodejs.org/en/download/)
+- [NPM](https://www.npmjs.com/get-npm)
 
 
 ## 🔌 Installation
@@ -137,5 +137,5 @@ $ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\onlyFiles\" --path "C:\Users
 - [ ] Add image(s) to readme
 
 
-## 🔒 License
+## ⚖️ License
 [MIT LICENSE](https://github.com/Abdullah-V/HMSC/blob/master/LICENSE)

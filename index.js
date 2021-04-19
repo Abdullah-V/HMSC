@@ -11,7 +11,7 @@ var
     lineCount = 0,
     folderCount = 0,
     fileCount = 0,
-    files = [],
+    paths = [],
     readedFolders = []
     givenPath = ""
     excludeds = []
@@ -20,7 +20,7 @@ var
 async function readFolder(folder) {
     folderCount++
     folder = await path.resolve(folder)
-    await files.push(...fs.readdirSync(folder).map(fileName => {
+    await paths.push(...fs.readdirSync(folder).map(fileName => {
         return path.join(folder, fileName)
     }))
 }
@@ -55,12 +55,12 @@ async function main(stuff) {
     }
     else if(isFolder(stuff)) {
        await readFolder(stuff)
-       return main(files)
+       return main(paths)
     }
     else if(Array.isArray(stuff)){
-        if(files.every(isEnd)){
+        if(paths.every(isEnd)){
             // files = await [...new Set(files)]
-            onlyFiles = await files.filter(isFile) 
+            onlyFiles = await paths.filter(isFile) 
             await calculateCounts()
             console.log(`\n📂 ${chalk.green(folderCount)} ${chalk.blue("folder")};\n\n📄 ${chalk.green(lineCount)} ${chalk.blue("line")} in ${chalk.green(fileCount)} ${chalk.blue("file")}\n\n⭐ inside ${chalk.yellow(givenPath)}\n`)
         }
@@ -71,7 +71,7 @@ async function main(stuff) {
                     readedFolders.push(f)
                 }
             })
-            return main(files)
+            return main(paths)
         }
     }
 }
@@ -101,7 +101,7 @@ async function main(stuff) {
         })
         if(v) {
             await givenPath.forEach(f => {
-                files.push(f)
+                paths.push(f)
             })
             if(givenPath.every(isFile)) { await folderCount++ }
             main(givenPath)

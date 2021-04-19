@@ -1,5 +1,5 @@
 {
-  "name": "hms",
+  "name": "hmsc",
   "version": "1.0.0",
   "description": "HMS (How Many Stuffs) provide you count the number of files, folders and lines in the directory (and more)",
   "main": "index.js",

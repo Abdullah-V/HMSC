@@ -20,7 +20,7 @@ HMS (How Many Stuffs) provide you count the number of files, folders and lines i
 
 ## 🔌 Installation
 
-`$ npm i -g hms`
+`$ npm i -g hmsc`
 
 ## ⚡ Usage
 
@@ -57,7 +57,7 @@ Give an absolute or relative path. If path is folder path, the number of folders
 #### Examples:
 
 ```cmd
-$ hms --path "C:\\Users\\Abdullah\\Desktop\\testForHMS\\"
+$ hmsc --path "C:\\Users\\Abdullah\\Desktop\\testForHMS\\"
 
 📂 9 folder;
 
@@ -68,21 +68,21 @@ $ hms --path "C:\\Users\\Abdullah\\Desktop\\testForHMS\\"
 
 
 
-$ hms --path "C:\\Users\\Abdullah\\Desktop\\testForHMS\\sampleFile1.js"
+$ hmsc --path "C:\\Users\\Abdullah\\Desktop\\testForHMS\\sampleFile1.js"
 
 📄 17 line in C:\Users\Abdullah\Desktop\testForHMS\sampleFile1.js file
 
 
 
 
-$ hms --path "C:\Users\Abdullah\Desktop\testForHMS\adasdsasd"
+$ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\adasdsasd"
 
 ❌  No such file or directory: C:\Users\Abdullah\Desktop\testForHMS\adasdsasd
 
 
 
 
-$ hms --path "C:\Users\Abdullah\Desktop\testForHMS\onlyFolder\" --path "C:\Users\Abdullah\Desktop\testForHMS\sampleFile1.js"
+$ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\onlyFolder\" --path "C:\Users\Abdullah\Desktop\testForHMS\sampleFile1.js"
 
 📂 4 folder;
 
@@ -98,7 +98,7 @@ Folders or files you wanted to be excluded, give the relative or absolute path. 
 #### Examples: 
 ```cmd
 
-$ hms --path "C:\Users\Abdullah\Desktop\testForHMS\" --exclude "C:\Users\Abdullah\Desktop\testForHMS\onlyFolder\"
+$ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\" --exclude "C:\Users\Abdullah\Desktop\testForHMS\onlyFolder\"
 
 📂 4 folder;
 
@@ -109,7 +109,7 @@ $ hms --path "C:\Users\Abdullah\Desktop\testForHMS\" --exclude "C:\Users\Abdulla
 
 
 
-$ hms --path "C:\Users\Abdullah\Desktop\testForHMS\" --exclude "C:\Users\Abdullah\Desktop\testForHMS\onlyFolder\" --exclude "C:\Users\Abdullah\Desktop\testForHMS\onlyFiles\"
+$ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\" --exclude "C:\Users\Abdullah\Desktop\testForHMS\onlyFolder\" --exclude "C:\Users\Abdullah\Desktop\testForHMS\onlyFiles\"
 
 📂 3 folder;
 
@@ -120,7 +120,7 @@ $ hms --path "C:\Users\Abdullah\Desktop\testForHMS\" --exclude "C:\Users\Abdulla
 
 
 
-$ hms --path "C:\Users\Abdullah\Desktop\testForHMS\onlyFiles\" --path "C:\Users\Abdullah\Desktop\testForHMS\onlyFolder\" --exclude "C:\Users\Abdullah\Desktop\testForHMS\onlyFolder\subFolder1\" --exclude "C:\Users\Abdullah\Desktop\testForHMS\onlyFiles\file1.js"
+$ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\onlyFiles\" --path "C:\Users\Abdullah\Desktop\testForHMS\onlyFolder\" --exclude "C:\Users\Abdullah\Desktop\testForHMS\onlyFolder\subFolder1\" --exclude "C:\Users\Abdullah\Desktop\testForHMS\onlyFiles\file1.js"
 
 📂 3 folder;
 

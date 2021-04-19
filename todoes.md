@@ -1,3 +1,7 @@
-- [ ] "exclude hidden files" option
-- [ ] file extension analysis
+- [ ] "exclude hidden files/folder" option
+- [ ] File extension analysis
 - [ ] Add image to readme
+- [ ] Publish on npm
+- [ ] Update package.json
+- [ ] Requirements on readme
+- [ ] Guide on readme

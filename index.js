@@ -27,7 +27,7 @@ async function readFolder(folder) {
 
 function isEnd(path) {
     try {
-        return fs.lstatSync(path).isFile() || readedFolders.includes(path)
+        return isFile(path) || readedFolders.includes(path)
     }
     catch(e){
         return false
@@ -51,7 +51,7 @@ async function calculateCounts() {
 
 async function main(stuff) {
     if(isFile(stuff)) {
-        console.log(`\n${chalk.green(lineCountOfFile(stuff))} ${chalk.blue("line")} in ${chalk.yellow(stuff)} file\n`)
+        console.log(`\n📄 ${chalk.green(lineCountOfFile(stuff))} ${chalk.blue("line")} in ${chalk.yellow(stuff)} file\n`)
     }
     else if(isFolder(stuff)) {
        await readFolder(stuff)
@@ -59,6 +59,7 @@ async function main(stuff) {
     }
     else if(Array.isArray(stuff)){
         if(files.every(isEnd)){
+            // files = await [...new Set(files)]
             onlyFiles = await files.filter(isFile) 
             await calculateCounts()
             console.log(`\n📂 ${chalk.green(folderCount)} ${chalk.blue("folder")};\n\n📄 ${chalk.green(lineCount)} ${chalk.blue("line")} in ${chalk.green(fileCount)} ${chalk.blue("file")}\n\n⭐ inside ${chalk.yellow(givenPath)}\n`)
@@ -90,9 +91,28 @@ async function main(stuff) {
 
     await readedFolders.push(...excludeds)
 
-    if(isExists(givenPath)) {
-        main(givenPath)
-    } else {
-        console.log(`\n❌  ${chalk.red("No such file or directory:")} ${chalk.yellow(givenPath)}\n`)
+    if(Array.isArray(givenPath)) {
+        var v = await true // valid
+        await givenPath.forEach(p => {
+            if(!isExists(p)) {
+                console.log(`\n❌  ${chalk.red("No such file or directory:")} ${chalk.yellow(p)}\n`)
+                v = false
+            }
+        })
+        if(v) {
+            await givenPath.forEach(f => {
+                files.push(f)
+            })
+            if(givenPath.every(isFile)) { await folderCount++ }
+            main(givenPath)
+        }
+    } 
+    else {
+        if(isExists(givenPath)) {
+            main(givenPath)
+        } else {
+            console.log(`\n❌  ${chalk.red("No such file or directory:")} ${chalk.yellow(givenPath)}\n`)
+        }
     }
 })()
+

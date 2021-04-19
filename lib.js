@@ -5,14 +5,14 @@ module.exports = {
         try {
             return fs.lstatSync(path).isFile()
         }
-        catch(e){}
+        catch(e){ return false }
     },
     
     isFolder(path) {
         try {
             return fs.lstatSync(path).isDirectory()
         }
-        catch(e){}
+        catch(e){ return false }
     },
     
     lineCountOfFile(path) {

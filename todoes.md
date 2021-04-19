@@ -1,4 +1,4 @@
-- [ ] "exclude hidden files/folder" option
+- [ ] "exclude hidden files/folders" option
 - [ ] File extension analysis
 - [ ] Add image to readme
 - [ ] Publish on npm

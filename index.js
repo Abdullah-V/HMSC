@@ -79,8 +79,8 @@ async function main(stuff) {
 (async function setup(){
     // console.log(getFileExtension("deneme.js"))
     givenPath = await argv.path
-    if(argv.excludeds){
-        excludeds = await Array.isArray(argv.excludeds) ? argv.excludeds : [argv.excludeds]
+    if(argv.exclude){
+        excludeds = await Array.isArray(argv.exclude) ? argv.exclude : [argv.exclude]
     }
     
     excludeds = await excludeds.filter(isExists)

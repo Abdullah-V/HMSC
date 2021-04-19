@@ -1,7 +1,7 @@
 {
   "name": "hmsc",
-  "version": "1.0.1",
-  "description": "HMS (How Many Stuffs) provide you count the number of files, folders and lines in the directory (and more)",
+  "version": "1.0.2",
+  "description": "HMSC (How Many Stuffs CLI) provide you count the number of files, folders and lines in the directory (and more)",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -17,11 +17,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Abdullah-V/HMS.git"
+    "url": "https://github.com/Abdullah-V/HMSC.git"
   },
-  "homepage": "https://github.com/Abdullah-V/HMS",
+  "homepage": "https://github.com/Abdullah-V/HMSC",
   "keywords": [
-    "hms", 
+    "hmsc", 
     "count", 
     "files", 
     "folders", 

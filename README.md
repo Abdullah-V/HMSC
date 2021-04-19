@@ -133,9 +133,9 @@ $ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\onlyFiles\" --path "C:\Users
 
 ## ✨ Todoes
 - [ ] "exclude hidden files/folders" option
-- [ ] File extension analysis
+- [ ] Line count on file extension analysis
 - [ ] Add image(s) to readme
-
+- [ ] Add tests.js
 
 ## ⚖️ License
 [MIT LICENSE](https://github.com/Abdullah-V/HMSC/blob/master/LICENSE)

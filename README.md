@@ -11,7 +11,7 @@
 
 ## 🔰 About
 
-HMSC (How Many Stuffs) provide you count the number of files, folders and lines in the directory (and more)
+HMSC (How Many Stuffs CLI) provide you count the number of files, folders and lines in the directory (and more)
 
 ## 📓 Requirements
 - [Node.js](https://nodejs.org/en/download/)
@@ -138,4 +138,4 @@ $ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\onlyFiles\" --path "C:\Users
 
 
 ## 🔒 License
-[MIT LICENSE](https://github.com/Abdullah-V/HMS/blob/master/LICENSE)
+[MIT LICENSE](https://github.com/Abdullah-V/HMSC/blob/master/LICENSE)

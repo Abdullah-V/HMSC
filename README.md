@@ -30,10 +30,12 @@ HMSC (How Many Stuffs CLI) provide you count the number of files, folders and li
 C:.
 |   sampleFile1.js
 |   sampleFile2.js
+|   sampleFile3.py
 |
 +---onlyFiles
 |       file1.js
 |       file2.js
+|       file3.py
 |
 +---onlyFolder
 |   +---subFolder1
@@ -42,6 +44,7 @@ C:.
 |       \---subSubFolder21
 \---sampleFolder
     |   subFile1.js
+    |   subFile2.py
     |
     +---subFolder1
     |       subFile1.js
@@ -61,9 +64,13 @@ $ hmsc --path "C:\\Users\\Abdullah\\Desktop\\testForHMS\\"
 
 📂 9 folder;
 
-📄 30 line in 7 file
+📄 33 line in 10 file;
 
-⭐ inside C:\Users\Abdullah\Desktop\testForHMS\
+7 .js file (70.00%);
+
+3 .py file (30.00%);
+
+⭐ inside C:\\Users\\Abdullah\\Desktop\\testForHMS\\
 
 
 
@@ -86,7 +93,9 @@ $ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\onlyFolder\" --path "C:\User
 
 📂 4 folder;
 
-📄 17 line in 1 file
+📄 17 line in 1 file;
+
+1 .js file (100.00%);
 
 ⭐ inside C:\Users\Abdullah\Desktop\testForHMS\onlyFolder\,C:\Users\Abdullah\Desktop\testForHMS\sampleFile1.js
 ```
@@ -102,7 +111,11 @@ $ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\" --exclude "C:\Users\Abdull
 
 📂 4 folder;
 
-📄 30 line in 7 file
+📄 33 line in 10 file;
+
+7 .js file (70.00%);
+
+3 .py file (30.00%);
 
 ⭐ inside C:\Users\Abdullah\Desktop\testForHMS\
 
@@ -113,7 +126,11 @@ $ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\" --exclude "C:\Users\Abdull
 
 📂 3 folder;
 
-📄 28 line in 5 file
+📄 30 line in 7 file;
+
+5 .js file (71.43%);
+
+2 .py file (28.57%);
 
 ⭐ inside C:\Users\Abdullah\Desktop\testForHMS\
 
@@ -124,7 +141,11 @@ $ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\onlyFiles\" --path "C:\Users
 
 📂 3 folder;
 
-📄 1 line in 1 file
+📄 2 line in 2 file;
+
+1 .js file (50.00%);
+
+1 .py file (50.00%);
 
 ⭐ inside C:\Users\Abdullah\Desktop\testForHMS\onlyFiles\,C:\Users\Abdullah\Desktop\testForHMS\onlyFolder\
 ```

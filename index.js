@@ -39,7 +39,6 @@ function isEnd(path) {
 
 async function calculateCounts() {
     folderCount -= 1
-    // fileCount = onlyFiles.length
     onlyFiles.forEach(async (f) => {
         f = await path.resolve(f)
         if(!readedFolders.includes(f)) { fileCount++ }
@@ -77,7 +76,7 @@ function calculateFileExtensionStatistics() {
 
 function logFileExtensionStatistics() {
     fileExtensionStatistics.forEach(item => {
-        console.log(`\n${chalk.green(item.count)} ${chalk.yellow(item.fe)} file (${chalk.cyan(item.percentage + '%')})`)
+        console.log(`\n${chalk.green(item.count)} ${chalk.yellow(item.fe)} file (${chalk.cyan(item.percentage + '%')});`)
     })
 }
 
@@ -112,7 +111,6 @@ async function main(stuff) {
 }
 
 (async function setup(){
-    // console.log(getFileExtension("deneme.js"))
     givenPath = await argv.path
     if(argv.exclude){
         excludeds = await Array.isArray(argv.exclude) ? argv.exclude : [argv.exclude]

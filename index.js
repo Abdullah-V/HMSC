@@ -18,6 +18,7 @@ var
     onlyFiles = []
     fileExtensions = []
     uniqueFileExtensions = []
+    fileExtensionStatistics = []
 
 async function readFolder(folder) {
     folderCount++
@@ -62,6 +63,16 @@ function getPercentageOfFileExtension(fe) { // parameter mean file extension
     return fileExtensions.filter(e => { return e === fe }).length * 100 / fileExtensions.length
 }
 
+function calculateFileExtensionStatistics() {
+    uniqueFileExtensions.forEach(ufe => {
+        fileExtensionStatistics.push({
+            fe: ufe,
+            percentage: getPercentageOfFileExtension(ufe),
+            count: fileExtensions.filter(e => {return e === ufe}).length
+        })
+    })
+}
+
 async function main(stuff) {
     if(isFile(stuff)) {
         console.log(`\n📄 ${chalk.green(lineCountOfFile(stuff))} ${chalk.blue("line")} in ${chalk.yellow(stuff)} file\n`)
@@ -75,7 +86,8 @@ async function main(stuff) {
             onlyFiles = await paths.filter(isFile) 
             await calculateCounts()
             await analyzeFileExtensions()
-            // console.log(getPercentageOfFileExtension(".py"))
+            await calculateFileExtensionStatistics()
+            console.log(fileExtensionStatistics)
             console.log(`\n📂 ${chalk.green(folderCount)} ${chalk.blue("folder")};\n\n📄 ${chalk.green(lineCount)} ${chalk.blue("line")} in ${chalk.green(fileCount)} ${chalk.blue("file")}\n\n⭐ inside ${chalk.yellow(givenPath)}\n`)
         }
         else{

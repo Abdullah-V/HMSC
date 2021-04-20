@@ -2,16 +2,28 @@
 
 [![node](https://badges.aleen42.com/src/node.svg)](https://badges.aleen42.com/src/javascript.svg
 )
-[![npm](https://badges.aleen42.com/src/npm.svg
-)](https://badges.aleen42.com/src/npm.svg)
 [![javascript](https://badges.aleen42.com/src/javascript.svg
 )](https://badges.aleen42.com/src/javascript.svg
 )
+[![npm](https://badges.aleen42.com/src/npm.svg
+)](https://badges.aleen42.com/src/npm.svg)
+[![downloads](https://img.shields.io/npm/dw/hmsc)](https://img.shields.io/npm/dw/hmsc)
+[![version](https://img.shields.io/npm/v/hmsc)](https://img.shields.io/npm/v/hmsc)
+[![license](https://img.shields.io/npm/l/hmsc)](https://img.shields.io/npm/l/hmsc)
+[![lines](https://img.shields.io/tokei/lines/github/Abdullah-V/HMSC)](https://img.shields.io/tokei/lines/github/Abdullah-V/HMSC)
+
+
+[![]()]()
 
 
 ## 🔰 About
 
 HMSC (How Many Stuffs CLI) provide you count the number of files, folders and lines in the directory (and more)
+
+## 📸 Screenshot
+
+[![screenshot](https://raw.githubusercontent.com/Abdullah-V/media/master/HMSC.png)](https://raw.githubusercontent.com/Abdullah-V/media/master/HMSC.png)
+
 
 ## 📓 Requirements
 - [Node.js](https://nodejs.org/en/download/)

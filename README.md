@@ -24,7 +24,7 @@ HMSC (How Many Stuffs CLI) provide you count the number of files, folders and li
 
 ## ⚡ Usage
 
-### 📂 Example direcotry structure
+### 📂 Example directory structure
 
 ```
 C:.

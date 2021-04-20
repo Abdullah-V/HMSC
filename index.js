@@ -96,7 +96,7 @@ async function main(stuff) {
             await calculateFileExtensionStatistics()
             await console.log(`\n📂 ${chalk.green(folderCount)} ${chalk.blue("folder")};\n\n📄 ${chalk.green(lineCount)} ${chalk.blue("line")} in ${chalk.green(fileCount)} ${chalk.blue("file")};`)
             await logFileExtensionStatistics()
-            console.log(`\n⭐ inside ${chalk.yellow(givenPath)}\n`)
+            await console.log(`\n⭐ inside ${chalk.yellow(givenPath)}\n`)
         }
         else{
             await stuff.forEach(f => {

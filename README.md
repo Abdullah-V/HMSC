@@ -1,4 +1,4 @@
-# HMSC (Beta)
+# HMSC
 
 [![node](https://badges.aleen42.com/src/node.svg)](https://badges.aleen42.com/src/javascript.svg
 )
@@ -7,14 +7,8 @@
 )
 [![npm](https://badges.aleen42.com/src/npm.svg
 )](https://badges.aleen42.com/src/npm.svg)
-[![downloads](https://img.shields.io/npm/dw/hmsc)](https://img.shields.io/npm/dw/hmsc)
 [![version](https://img.shields.io/npm/v/hmsc)](https://img.shields.io/npm/v/hmsc)
 [![license](https://img.shields.io/npm/l/hmsc)](https://img.shields.io/npm/l/hmsc)
-[![lines](https://img.shields.io/tokei/lines/github/Abdullah-V/HMSC)](https://img.shields.io/tokei/lines/github/Abdullah-V/HMSC)
-
-
-[![]()]()
-
 
 ## 🔰 About
 
@@ -166,8 +160,9 @@ $ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\onlyFiles\" --path "C:\Users
 
 ## ✨ Todoes
 - [ ] "exclude hidden files/folders" option
-- [ ] Add image(s) to readme
 - [ ] Add tests.js
+- [ ] How many file extension
+- [ ] Add simple terminal documentation
 
 ## ⚖️ License
 [MIT LICENSE](https://github.com/Abdullah-V/HMSC/blob/master/LICENSE)

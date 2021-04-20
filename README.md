@@ -66,6 +66,8 @@ $ hmsc --path "C:\\Users\\Abdullah\\Desktop\\testForHMS\\"
 
 📄 33 line in 10 file;
 
+2 file extensions: .js .py;
+
 30 line (90.91% of total lines) on 7 .js file (70.00% of all files);
 
 3 line (9.09% of total lines) on 3 .py file (30.00% of all files);  
@@ -95,6 +97,8 @@ $ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\onlyFolder\" --path "C:\User
 
 📄 17 line in 1 file;
 
+1 file extensions: .js;
+
 17 line (100.00% of total lines) on 1 .js file (100.00% of all files);
 
 ⭐ inside C:\Users\Abdullah\Desktop\testForHMS\onlyFolder\,C:\Users\Abdullah\Desktop\testForHMS\sampleFile1.js
@@ -113,6 +117,8 @@ $ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\" --exclude "C:\Users\Abdull
 
 📄 33 line in 10 file;
 
+2 file extensions: .js .py;
+
 30 line (90.91% of total lines) on 7 .js file (70.00% of all files);
 
 3 line (9.09% of total lines) on 3 .py file (30.00% of all files);  
@@ -128,6 +134,8 @@ $ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\" --exclude "C:\Users\Abdull
 
 📄 30 line in 7 file;
 
+2 file extensions: .js .py;
+
 28 line (93.33% of total lines) on 5 .js file (71.43% of all files);
 
 2 line (6.67% of total lines) on 2 .py file (28.57% of all files);  
@@ -139,13 +147,15 @@ $ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\" --exclude "C:\Users\Abdull
 
 $ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\onlyFiles\" --path "C:\Users\Abdullah\Desktop\testForHMS\onlyFolder\" --exclude "C:\Users\Abdullah\Desktop\testForHMS\onlyFolder\subFolder1\" --exclude "C:\Users\Abdullah\Desktop\testForHMS\onlyFiles\file1.js"
 
-📂 3 folder;
+📂 3 folder;        
 
 📄 2 line in 2 file;
 
-1 .js file (50.00%);
+2 file extensions: .js .py;
 
-1 .py file (50.00%);
+1 line (50.00% of total lines) on 1 .js file (50.00% of all files);
+
+1 line (50.00% of total lines) on 1 .py file (50.00% of all files);
 
 ⭐ inside C:\Users\Abdullah\Desktop\testForHMS\onlyFiles\,C:\Users\Abdullah\Desktop\testForHMS\onlyFolder\
 ```

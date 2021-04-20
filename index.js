@@ -102,7 +102,8 @@ async function main(stuff) {
             await calculateCounts()
             await analyzeFileExtensions()
             await calculateFileExtensionStatistics()
-            await console.log(`\n📂 ${chalk.green(folderCount)} ${chalk.blue("folder")};\n\n📄 ${chalk.green(lineCount)} ${chalk.blue("line")} in ${chalk.green(fileCount)} ${chalk.blue("file")};`)
+            await console.log(`\n📂 ${chalk.green(folderCount)} ${chalk.blue("folder")};\n\n📄 ${chalk.green(lineCount)} ${chalk.blue("line")} in ${chalk.green(fileCount)} ${chalk.blue("file")};\n`)
+            await console.log(chalk.green(uniqueFileExtensions.length) + " file extensions: " + chalk.yellow(...uniqueFileExtensions) + ";")
             await logFileExtensionStatistics()
             await console.log(`\n⭐ inside ${chalk.yellow(givenPath)}\n`)
         }

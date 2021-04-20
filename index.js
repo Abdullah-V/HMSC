@@ -84,7 +84,7 @@ async function calculateFileExtensionStatistics() {
 
 function logFileExtensionStatistics() {
     fileExtensionStatistics.forEach(item => {
-        console.log(`\n${chalk.green(item.lineCount)} line (${chalk.cyan(getPercentageOfLines(item.lineCount).toFixed(2) + '%' )} of total lines) on ${chalk.green(item.count)} ${chalk.yellow(item.fe)} file (${chalk.cyan(item.percentage + '%')} of all files);`)
+        console.log(`\n${chalk.green(item.lineCount)} ${chalk.blue("line")} (${chalk.cyan(getPercentageOfLines(item.lineCount).toFixed(2) + '%' )} of total lines) on ${chalk.green(item.count)} ${chalk.yellow(item.fe)} ${chalk.blue("file")} (${chalk.cyan(item.percentage + '%')} of all files);`)
     })
 }
 
@@ -103,7 +103,7 @@ async function main(stuff) {
             await analyzeFileExtensions()
             await calculateFileExtensionStatistics()
             await console.log(`\n📂 ${chalk.green(folderCount)} ${chalk.blue("folder")};\n\n📄 ${chalk.green(lineCount)} ${chalk.blue("line")} in ${chalk.green(fileCount)} ${chalk.blue("file")};\n`)
-            await console.log(chalk.green(uniqueFileExtensions.length) + " file extensions: " + chalk.yellow(...uniqueFileExtensions) + ";")
+            await console.log(chalk.green(uniqueFileExtensions.length) + chalk.blue(" file extensions: ") + chalk.yellow(...uniqueFileExtensions) + ";")
             await logFileExtensionStatistics()
             await console.log(`\n⭐ inside ${chalk.yellow(givenPath)}\n`)
         }

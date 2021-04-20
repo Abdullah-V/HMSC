@@ -171,7 +171,6 @@ $ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\onlyFiles\" --path "C:\Users
 ## ✨ Todoes
 - [ ] "exclude hidden files/folders" option
 - [ ] Add tests.js
-- [ ] How many file extension
 - [ ] Add simple terminal documentation
 
 ## ⚖️ License

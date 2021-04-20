@@ -63,20 +63,28 @@ function getPercentageOfFileExtension(fe) { // parameter mean file extension
     return fileExtensions.filter(e => { return e === fe }).length * 100 / fileExtensions.length
 }
 
-function calculateFileExtensionStatistics() {
-    uniqueFileExtensions.forEach(ufe => {
+function getPercentageOfLines(l) { // line
+    return l * 100 / lineCount
+}
+
+async function calculateFileExtensionStatistics() {
+    uniqueFileExtensions.forEach(async (ufe) => {
+        var total = 0
+        await onlyFiles.filter(f => { return path.basename(f).endsWith(ufe) }).forEach(file => {
+            total += lineCountOfFile(file)
+        })
         fileExtensionStatistics.push({
             fe: ufe,
             percentage: getPercentageOfFileExtension(ufe).toFixed(2),
-            count: fileExtensions.filter(e => {return e === ufe}).length
-            // line count
+            count: fileExtensions.filter(e => {return e === ufe}).length,
+            lineCount: total
         })
     })
 }
 
 function logFileExtensionStatistics() {
     fileExtensionStatistics.forEach(item => {
-        console.log(`\n${chalk.green(item.count)} ${chalk.yellow(item.fe)} file (${chalk.cyan(item.percentage + '%')});`)
+        console.log(`\n${chalk.green(item.lineCount)} line (${chalk.cyan(getPercentageOfLines(item.lineCount).toFixed(2) + '%' )} of total lines) on ${chalk.green(item.count)} ${chalk.yellow(item.fe)} file (${chalk.cyan(item.percentage + '%')} of all files);`)
     })
 }
 
@@ -96,7 +104,7 @@ async function main(stuff) {
             await calculateFileExtensionStatistics()
             await console.log(`\n📂 ${chalk.green(folderCount)} ${chalk.blue("folder")};\n\n📄 ${chalk.green(lineCount)} ${chalk.blue("line")} in ${chalk.green(fileCount)} ${chalk.blue("file")};`)
             await logFileExtensionStatistics()
-            console.log(`\n⭐ inside ${chalk.yellow(givenPath)}\n`)
+            await console.log(`\n⭐ inside ${chalk.yellow(givenPath)}\n`)
         }
         else{
             await stuff.forEach(f => {

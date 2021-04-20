@@ -66,9 +66,9 @@ $ hmsc --path "C:\\Users\\Abdullah\\Desktop\\testForHMS\\"
 
 📄 33 line in 10 file;
 
-7 .js file (70.00%);
+30 line (90.91% of total lines) on 7 .js file (70.00% of all files);
 
-3 .py file (30.00%);
+3 line (9.09% of total lines) on 3 .py file (30.00% of all files);  
 
 ⭐ inside C:\\Users\\Abdullah\\Desktop\\testForHMS\\
 
@@ -95,7 +95,7 @@ $ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\onlyFolder\" --path "C:\User
 
 📄 17 line in 1 file;
 
-1 .js file (100.00%);
+17 line (100.00% of total lines) on 1 .js file (100.00% of all files);
 
 ⭐ inside C:\Users\Abdullah\Desktop\testForHMS\onlyFolder\,C:\Users\Abdullah\Desktop\testForHMS\sampleFile1.js
 ```
@@ -113,9 +113,9 @@ $ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\" --exclude "C:\Users\Abdull
 
 📄 33 line in 10 file;
 
-7 .js file (70.00%);
+30 line (90.91% of total lines) on 7 .js file (70.00% of all files);
 
-3 .py file (30.00%);
+3 line (9.09% of total lines) on 3 .py file (30.00% of all files);  
 
 ⭐ inside C:\Users\Abdullah\Desktop\testForHMS\
 
@@ -128,9 +128,9 @@ $ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\" --exclude "C:\Users\Abdull
 
 📄 30 line in 7 file;
 
-5 .js file (71.43%);
+28 line (93.33% of total lines) on 5 .js file (71.43% of all files);
 
-2 .py file (28.57%);
+2 line (6.67% of total lines) on 2 .py file (28.57% of all files);  
 
 ⭐ inside C:\Users\Abdullah\Desktop\testForHMS\
 
@@ -154,7 +154,6 @@ $ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\onlyFiles\" --path "C:\Users
 
 ## ✨ Todoes
 - [ ] "exclude hidden files/folders" option
-- [ ] Line count on file extension analysis
 - [ ] Add image(s) to readme
 - [ ] Add tests.js
 

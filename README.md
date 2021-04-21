@@ -170,8 +170,10 @@ $ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\onlyFiles\" --path "C:\Users
 
 ## ✨ Todoes
 - [ ] "exclude hidden files/folders" option
-- [ ] Add tests.js
-- [ ] Add simple terminal documentation
+- [ ] ✅ Add tests.js
+- [ ] 📄 Add simple terminal documentation
+- [ ] 📦 Size analyst
+- [ ] Exclude paths with regex option
 
 ## ⚖️ License
 [MIT LICENSE](https://github.com/Abdullah-V/HMSC/blob/master/LICENSE)

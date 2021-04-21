@@ -11,7 +11,8 @@ const {
     isExists, 
     getFileExtension, 
     getSizeOfFile
-    } = require("./lib.js");
+} = require("./lib.js");
+
 const { table } = require('console');
 
 var 
@@ -103,7 +104,7 @@ async function calculateFileExtensionStatistics() {
 
 function logFileExtensionStatistics() {
     fileExtensionStatistics.forEach(item => {
-        console.log(`\n${chalk.green(item.lineCount)} ${chalk.blue("line")} (${chalk.cyan(getPercentageOfLines(item.lineCount).toFixed(2) + '%' )} of total lines) on ${chalk.green(item.count)} ${chalk.yellow(item.fe)} ${chalk.blue("file")} (${chalk.cyan(item.percentage + '%')} of all files), ${chalk.blue("Size:")} ${chalk.green(item.size)} MB (${chalk.cyan(getPercentageOfSize(item.size).toFixed(2) + "%")} of total size)`)
+        console.log(`\n${chalk.green(item.lineCount)} ${chalk.blue("line")} (${chalk.cyan(getPercentageOfLines(item.lineCount).toFixed(2) + '%' )} of total lines) on ${chalk.green(item.count)} ${chalk.yellow(item.fe)} ${chalk.blue("file")} (${chalk.cyan(item.percentage + '%')} of all files), ${chalk.blue("Size:")} ${chalk.green(item.size.toFixed(8))} MB (${chalk.cyan(getPercentageOfSize(item.size).toFixed(2) + "%")} of total size)`)
     })
 }
 
@@ -113,7 +114,7 @@ async function output() {
     await analyzeFileExtensions()
     await calculateFileExtensionStatistics()
     await console.log(`\n📂 ${chalk.green(folderCount)} ${chalk.blue("folder")};\n\n📄 ${chalk.green(lineCount)} ${chalk.blue("line")} in ${chalk.green(fileCount)} ${chalk.blue("file")};\n`)
-    await console.log(`Total ${chalk.blue("size")} of files: ${chalk.green(totalSize)} MB\n`)
+    await console.log(`Total ${chalk.blue("size")} of files: ${chalk.green(totalSize.toFixed(8))} MB\n`)
     await console.log(chalk.green(uniqueFileExtensions.length) + chalk.blue(" file extensions: ") + chalk.yellow(...uniqueFileExtensions) + ";")
     if(!tableOutput) { await logFileExtensionStatistics() }
     if(tableOutput) {
@@ -134,7 +135,7 @@ async function output() {
 
 async function main(stuff) {
     if(isFile(stuff)) {
-        console.log(`\n📄 ${chalk.green(lineCountOfFile(stuff))} ${chalk.blue("line")} in ${chalk.yellow(stuff)} file\n`)
+        console.log(`\n📄 ${chalk.green(lineCountOfFile(stuff))} ${chalk.blue("line")} in ${chalk.yellow(stuff)} file; ${chalk.blue("Size")}: ${chalk.green(getSizeOfFile(stuff).toFixed(8))} MB\n`)
     }
     else if(isFolder(stuff)) {
        await readFolder(stuff)

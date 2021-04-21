@@ -27,6 +27,9 @@
     "folder",
     "directory",
     "analyst",
+    "size",
+    "line",
+    "percentage",
     "cli"
   ]
 }

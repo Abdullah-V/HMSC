@@ -173,7 +173,11 @@ $ hmsc --path "C:\Users\Abdullah\Desktop\testForHMS\onlyFiles\" --path "C:\Users
 - [ ] ✅ Add tests.js
 - [ ] 📄 Add simple terminal documentation
 - [ ] 📦 Size analyst
+- [ ] 🌵 Add branches to readme
 - [ ] Exclude paths with regex option
+- [ ] Add "output as table" option
+- [ ] Sort output option
+- [ ] Add "console-table-printer" npm package
 
 ## ⚖️ License
 [MIT LICENSE](https://github.com/Abdullah-V/HMSC/blob/master/LICENSE)

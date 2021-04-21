@@ -25,11 +25,11 @@ module.exports = {
     
     getFileExtension(str) {
         try {
-            if(str[0] === ".") {
-                return false
-            } else {
                 return str.match(/\.[0-9a-z]+$/ig)[0]
-            }
         } catch(e) { return false }
+    },
+
+    getSizeOfFile(file) {
+        return fs.statSync(file).size / (1024*1024);
     }
 }

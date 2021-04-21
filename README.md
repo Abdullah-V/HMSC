@@ -12,7 +12,7 @@
 
 ## 🔰 About
 
-HMSC (How Many Stuffs CLI) provide you count the number of files, folders and lines in the directory (and more)
+HMSC (How Many Stuffs CLI) analyst for your files and folders
 
 ## 📸 Screenshot
 
@@ -207,9 +207,9 @@ Total size of files: 0.00033760 MB
 
 
 ## 🌵 Branches
-- ### `master`
+- ### [`master`](https://github.com/Abdullah-V/HMSC/tree/master)
     Production branch
-- ### `development`
+- ### [`development`](https://github.com/Abdullah-V/HMSC/tree/development)
     Development branch
 
 

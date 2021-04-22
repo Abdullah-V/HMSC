@@ -1,7 +1,7 @@
 {
   "name": "hmsc",
-  "version": "1.1.5",
-  "description": "HMSC (How Many Stuffs CLI) provide you count the number of files, folders and lines in the directory (and more)",
+  "version": "1.1.6",
+  "description": "HMSC (How Many Stuffs CLI) analyst for your files and folders",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"

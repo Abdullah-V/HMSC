@@ -217,7 +217,6 @@ Total size of files: 0.00033760 MB
 ## ✨ Todoes
 - [ ] "exclude hidden files/folders" option
 - [ ] ✅ Add tests.js
-- [ ] 📄 Add simple terminal documentation
 - [ ] Exclude paths with regex option
 - [ ] Add "sort output" option
 - [ ] Add "console-table-printer" npm package

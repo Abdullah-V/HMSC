@@ -159,6 +159,29 @@ async function main(stuff) {
 
 (async function setup(){
     givenPath = await argv.path
+    if(!givenPath) {
+        console.log(`\n${chalk.yellow("HMSC (How Many Stuffs CLI) analyst for your files and folders")}\n`)
+        console.log(`📄 Check guide, examples and source code from here: ${chalk.green("https://github.com/Abdullah-V/HMSC")}\n`)
+
+        // --path
+        console.log(`${chalk.blue("--path")}\n`)
+        console.log("Give an absolute or relative path.".padStart(40))
+        console.log("If path is folder path, folder analyzes is is shown,".padStart(58))
+        console.log("if file path, shows number of lines and size of file.".padStart(59))
+        console.log("You can multiple this.\n".padStart(29))
+
+        // --exclude
+        console.log(`${chalk.blue("--exclude")}\n`)
+        console.log("Folders or files you wanted to be excluded.".padStart(49))
+        console.log("Give the relative or absolute path.".padStart(41))
+        console.log("You can multiple this.\n".padStart(29))
+
+        // --table
+        console.log(`${chalk.blue("--table")}\n`)
+        console.log("If given, output shown as table.\n".padStart(38))
+
+        return false
+    }
     if(argv.exclude){
         excludeds = await Array.isArray(argv.exclude) ? argv.exclude : [argv.exclude]
     }

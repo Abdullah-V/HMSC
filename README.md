@@ -216,10 +216,10 @@ Total size of files: 0.00033760 MB
 
 ## ✨ Todoes
 - [ ] "exclude hidden files/folders" option
-- [ ] ✅ Add tests.js
-- [ ] Exclude paths with regex option
+- [ ] "Exclude paths with regex" option
 - [ ] Add "sort output" option
 - [ ] Add "console-table-printer" npm package
+- [ ] Change "unReadPaths" variable name to "willNotBeRead"
 
 ## ⚖️ License
 [MIT LICENSE](https://github.com/Abdullah-V/HMSC/blob/master/LICENSE)

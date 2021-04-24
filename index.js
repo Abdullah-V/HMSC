@@ -20,7 +20,7 @@ var
     folderCount = 0
     fileCount = 0
     paths = []
-    readedFolders = []
+    unReadPaths = []
     givenPath = ""
     excludeds = []
     onlyFiles = []
@@ -40,7 +40,7 @@ async function readFolder(folder) {
 
 function isEnd(path) {
     try {
-        return isFile(path) || readedFolders.includes(path)
+        return isFile(path) || unReadPaths.includes(path)
     }
     catch(e){
         return false
@@ -51,7 +51,7 @@ async function calculateCounts() {
     folderCount -= 1
     onlyFiles.forEach(async (f) => {
         f = await path.resolve(f)
-        if(!readedFolders.includes(f)) {
+        if(!unReadPaths.includes(f)) {
             fileCount++ 
             totalSize += getSizeOfFile(f)
         }
@@ -59,7 +59,7 @@ async function calculateCounts() {
     })
     await onlyFiles.forEach(async (file) => {
         file = await path.resolve(file)
-        if(!readedFolders.includes(file)) {
+        if(!unReadPaths.includes(file)) {
             lineCount += lineCountOfFile(file)
         }
     })
@@ -147,9 +147,9 @@ async function main(stuff) {
         }
         else{
             await stuff.forEach(f => {
-                if(isFolder(f) && !readedFolders.includes(f)){
+                if(isFolder(f) && !unReadPaths.includes(f)){
                     readFolder(f)
-                    readedFolders.push(f)
+                    unReadPaths.push(f)
                 }
             })
             return main(paths)
@@ -192,7 +192,7 @@ async function main(stuff) {
         return path.resolve(p)
     })
 
-    await readedFolders.push(...excludeds)
+    await unReadPaths.push(...excludeds)
 
     tableOutput = await "table" in argv
 

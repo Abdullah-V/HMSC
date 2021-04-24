@@ -205,6 +205,46 @@ Total size of files: 0.00033760 MB
 ```
 
 
+### `--exclude-hidden-files`
+
+Exclude hidden files
+
+#### Example:
+
+```cmd
+$ hmsc --path "C:\\Users\\Abdullah\\Desktop\\testForHMS\\" --exclude-hidden-files
+```
+
+
+### `--exclude-hidden-folders`
+
+Exclude hidden folders
+
+#### Example:
+
+```cmd
+$ hmsc --path "C:\\Users\\Abdullah\\Desktop\\testForHMS\\" --exclude-hidden-folders
+```
+
+
+
+### `--exclude-all-hiddens`
+
+Exclude hidden files and folder
+
+#### Example:
+
+```cmd
+$ hmsc --path "C:\\Users\\Abdullah\\Desktop\\testForHMS\\" --exclude-all-hiddens
+```
+
+
+
+
+
+
+
+
 
 ## 🌵 Branches
 - ### [`master`](https://github.com/Abdullah-V/HMSC/tree/master)
@@ -215,11 +255,9 @@ Total size of files: 0.00033760 MB
 
 
 ## ✨ Todoes
-- [ ] "exclude hidden files/folders" option
 - [ ] "Exclude paths with regex" option
 - [ ] Add "sort output" option
 - [ ] Add "console-table-printer" npm package
-- [ ] Change "unReadPaths" variable name to "willNotBeRead"
 
 ## ⚖️ License
 [MIT LICENSE](https://github.com/Abdullah-V/HMSC/blob/master/LICENSE)

@@ -10,7 +10,8 @@ const {
     lineCountOfFile, 
     isExists, 
     getFileExtension, 
-    getSizeOfFile
+    getSizeOfFile,
+    isHidden
 } = require("./lib.js");
 
 const { table } = require('console');
@@ -29,13 +30,20 @@ var
     fileExtensionStatistics = []
     totalSize = 0
     tableOutput = false
+    excludeHiddenFiles = false
+    excludeHiddenFolders = false
+    excludeAllHiddens = false
 
 async function readFolder(folder) {
-    folderCount++
-    folder = await path.resolve(folder)
-    await paths.push(...fs.readdirSync(folder).map(fileName => {
-        return path.join(folder, fileName)
-    }))
+    if((excludeHiddenFolders || excludeAllHiddens) && isHidden(folder)) {
+        return false
+    } else {
+        folderCount++
+        folder = await path.resolve(folder)
+        await paths.push(...fs.readdirSync(folder).map(fileName => {
+            return path.join(folder, fileName)
+        }))
+    }
 }
 
 function isEnd(path) {
@@ -110,6 +118,9 @@ function logFileExtensionStatistics() {
 
 async function output() {
     onlyFiles = await paths.filter(isFile) 
+    if(excludeHiddenFiles || excludeAllHiddens) {
+        onlyFiles = await onlyFiles.filter(fp => { return !isHidden(fp) }) // mean file path
+    }
     await calculateCounts()
     await analyzeFileExtensions()
     await calculateFileExtensionStatistics()
@@ -195,6 +206,12 @@ async function main(stuff) {
     await unReadPaths.push(...excludeds)
 
     tableOutput = await "table" in argv
+
+    excludeHiddenFiles = await "exclude-hidden-files" in argv
+
+    excludeHiddenFolders = await "exclude-hidden-folders" in argv
+
+    excludeAllHiddens = await "exclude-all-hiddens" in argv
 
     if(Array.isArray(givenPath)) {
         var v = await true // valid

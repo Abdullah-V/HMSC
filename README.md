@@ -255,9 +255,8 @@ $ hmsc --path "C:\\Users\\Abdullah\\Desktop\\testForHMS\\" --exclude-all-hiddens
 
 
 ## ✨ Todoes
-- [ ] "Exclude paths with regex" option
+- [ ] Use glob for "--path" and "--exclude" options
 - [ ] Add "sort output" option
-- [ ] Add "console-table-printer" npm package
 
 ## ⚖️ License
 [MIT LICENSE](https://github.com/Abdullah-V/HMSC/blob/master/LICENSE)

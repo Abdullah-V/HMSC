@@ -13,8 +13,7 @@ const {
     getSizeOfFile,
     isHidden
 } = require("./lib.js");
-
-const { table } = require('console');
+const { printTable } = require('console-table-printer');
 
 var 
     lineCount = 0
@@ -130,13 +129,13 @@ async function output() {
     if(!tableOutput) { await logFileExtensionStatistics() }
     if(tableOutput) {
         console.log()
-        await console.table(
+        await printTable(
             fileExtensionStatistics.map(item => {
                 return {
-                    "File extension": item.fe,
-                    "Count of files": `${item.count} (${item.percentage}% of all files)`,
-                    "Line Count": `${item.lineCount} (${getPercentageOfLines(item.lineCount).toFixed(2)}% of all lines)`,
-                    "Size":  `${item.size.toFixed(8)} MB (${getPercentageOfSize(item.size).toFixed(2)}% of total size)`
+                    "File extension": chalk.yellow(item.fe),
+                    "Count of files": `${chalk.green(item.count)} (${chalk.cyan(item.percentage + '%')} of all files)`,
+                    "Line Count": `${chalk.green(item.lineCount)} (${chalk.cyan(getPercentageOfLines(item.lineCount).toFixed(2) + '%')} of all lines)`,
+                    "Size":  `${chalk.green(item.size.toFixed(8) + 'MB')} (${chalk.cyan(getPercentageOfSize(item.size).toFixed(2) + '%')} of total size)`
                 }
             })
         )

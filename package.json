@@ -1,6 +1,6 @@
 {
   "name": "hmsc",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "HMSC (How Many Stuffs CLI) analyst for your files and folders",
   "main": "index.js",
   "scripts": {

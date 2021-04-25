@@ -27,7 +27,7 @@ module.exports = {
     getFileExtension(str) {
         try {
                 return str.match(/\.[0-9a-z]+$/ig)[0]
-        } catch(e) { return false }
+        } catch(e) { return str }
     },
 
     getSizeOfFile(file) {

@@ -239,23 +239,22 @@ $ hmsc --path "C:\\Users\\Abdullah\\Desktop\\testForHMS\\" --exclude-all-hiddens
 ```
 
 
+### `--sort-by <key>`
 
+Sort output by `<key>`
 
+available keys: `count`, `lineCount`, `size`
 
+NOTE: Sorting is ascending by default. For descending sorting use `--desc` option
 
+#### Example: 
 
+```cmd
+$ hmsc --path "C:\\Users\\Abdullah\\Desktop\\testForHMS\\" --table --sort-by "count"
 
+$ hmsc --path "C:\\Users\\Abdullah\\Desktop\\testForHMS\\" --table --sort-by "size" --desc
+```
 
-## 🌵 Branches
-- ### [`master`](https://github.com/Abdullah-V/HMSC/tree/master)
-    Production branch
-- ### [`development`](https://github.com/Abdullah-V/HMSC/tree/development)
-    Development branch
-
-
-
-## ✨ Todoes
-- [ ] Add "sort output" option
 
 ## ⚖️ License
 [MIT LICENSE](https://github.com/Abdullah-V/HMSC/blob/master/LICENSE)

@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
 const argv = require('minimist')(process.argv.slice(2));
+const { printTable } = require('console-table-printer');
 const { 
     isFile, 
     isFolder, 
@@ -13,8 +14,6 @@ const {
     getSizeOfFile,
     isHidden
 } = require("./lib.js");
-
-const { printTable } = require('console-table-printer');
 
 var 
     lineCount = 0
@@ -33,6 +32,9 @@ var
     excludeHiddenFiles = false
     excludeHiddenFolders = false
     excludeAllHiddens = false
+    sortKey = "count"
+    ascending = true
+    validSortKeys = ["count", "lineCount", "size"]
 
 async function readFolder(folder) {
     if((excludeHiddenFolders || excludeAllHiddens) && isHidden(folder)) {
@@ -93,7 +95,7 @@ function getPercentageOfSize(s) { // size
 }
 
 async function calculateFileExtensionStatistics() {
-    uniqueFileExtensions.forEach(async (ufe) => {
+    await uniqueFileExtensions.forEach(async (ufe) => {
         var totalLine = 0
         var s = 0 // size
         await onlyFiles.filter(f => { return path.basename(f).endsWith(ufe) }).forEach(file => {
@@ -107,6 +109,11 @@ async function calculateFileExtensionStatistics() {
             lineCount: totalLine,
             size: s
         })
+    })
+    fileExtensionStatistics.sort((a,b) => {
+        if(sortKey === "count"){return ascending ? a.count - b.count : b.count - a.count}
+        else if(sortKey === "lineCount"){return ascending ? a.lineCount - b.lineCount : b.lineCount - a.lineCount}
+        else if(sortKey === "size"){return ascending ? a.size - b.size : b.size - a.size}
     })
 }
 
@@ -212,6 +219,12 @@ async function main(stuff) {
     excludeHiddenFolders = await "exclude-hidden-folders" in argv
 
     excludeAllHiddens = await "exclude-all-hiddens" in argv
+
+    sortKey = await argv["sort-by"] || "count"
+
+    if(!(validSortKeys.includes(sortKey))) {sortKey = "count"}
+
+    ascending = await !("desc" in argv)
 
     if(Array.isArray(givenPath)) {
         var v = await true // valid

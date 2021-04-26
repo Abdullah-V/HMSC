@@ -13,6 +13,7 @@ const {
     getSizeOfFile,
     isHidden
 } = require("./lib.js");
+
 const { printTable } = require('console-table-printer');
 
 var 

@@ -12,7 +12,7 @@
 
 ## 🔰 About
 
-HMSC (How Many Stuffs CLI) analyst for your files and folders
+HMSC (How Much Stuffs CLI) analyst for your files and folders
 
 ## 📸 Screenshot
 

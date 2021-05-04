@@ -178,7 +178,7 @@ async function main(stuff) {
 (async function setup(){
     givenPath = await argv.path
     if(!givenPath) {
-        console.log(`\n${chalk.yellow("HMSC (How Many Stuffs CLI) analyst for your files and folders")}\n`)
+        console.log(`\n${chalk.yellow("HMSC (How Much Stuffs CLI) analyst for your files and folders")}\n`)
         console.log(`📄 Check guide, examples and source code from here: ${chalk.green("https://github.com/Abdullah-V/HMSC")}\n`)
 
         // --path

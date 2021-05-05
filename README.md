@@ -230,7 +230,7 @@ $ hmsc --path "C:\\Users\\Abdullah\\Desktop\\testForHMS\\" --exclude-hidden-fold
 
 ### `--exclude-all-hiddens`
 
-Exclude hidden files and folder
+Exclude hidden files and folders
 
 #### Example:
 

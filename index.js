@@ -196,7 +196,25 @@ async function main(stuff) {
 
         // --table
         console.log(`${chalk.blue("--table")}\n`)
-        console.log("If given, output shown as table.\n".padStart(38))
+        console.log("If given, output shown as table.\n".padStart(39))
+
+        // --exclude-hidden-files
+        console.log(`${chalk.blue("--exclude-hidden-files")}\n`)
+        console.log("Exclude hidden files.\n".padStart(28))
+
+        // --exclude-hidden-folders
+        console.log(`${chalk.blue("--exclude-hidden-folders")}\n`)
+        console.log("Exclude hidden folders.\n".padStart(30))
+
+        // --exclude-all-hiddens
+        console.log(`${chalk.blue("--exclude-all-hiddens")}\n`)
+        console.log("Exclude hidden files and folders.\n".padStart(40))
+
+        // --sort-by <key>
+        console.log(`${chalk.blue("--sort-by <key>")}\n`)
+        console.log("Sort output by <key>\n".padStart(27))
+        console.log(`Available keys: ${chalk.bold("count")}, ${chalk.bold("lineCount")}, ${chalk.bold("size")}\n`.padStart(72))
+        console.log("NOTE: Sorting is ascending by default. For descending sorting use --desc option.\n".padStart(87))
 
         return false
     }

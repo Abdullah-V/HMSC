@@ -12,29 +12,30 @@ const {
     isExists, 
     getFileExtension, 
     getSizeOfFile,
-    isHidden
+    isHidden,
+    printDocumentation
 } = require("./lib.js");
 
 var 
-    lineCount = 0
-    folderCount = 0
-    fileCount = 0
-    paths = []
-    unReadPaths = []
-    givenPath = ""
-    excludeds = []
-    onlyFiles = []
-    fileExtensions = []
-    uniqueFileExtensions = []
-    fileExtensionStatistics = []
-    totalSize = 0
-    tableOutput = false
-    excludeHiddenFiles = false
-    excludeHiddenFolders = false
-    excludeAllHiddens = false
-    sortKey = "count"
-    ascending = true
-    validSortKeys = ["count", "lineCount", "size"]
+    lineCount = 0,
+    folderCount = 0,
+    fileCount = 0,
+    paths = [],
+    willNotBeReadPaths = [],
+    givenPath = "",
+    excludeds = [],
+    onlyFiles = [],
+    fileExtensions = [],
+    uniqueFileExtensions = [],
+    fileExtensionStatistics = [],
+    totalSize = 0,
+    tableOutput = false,
+    excludeHiddenFiles = false,
+    excludeHiddenFolders = false,
+    excludeAllHiddens = false,
+    sortKey = "count",
+    ascending = true,
+    validSortKeys = ["count", "lineCount", "size"];
 
 async function readFolder(folder) {
     if((excludeHiddenFolders || excludeAllHiddens) && isHidden(folder)) {
@@ -50,7 +51,7 @@ async function readFolder(folder) {
 
 function isEnd(path) {
     try {
-        return isFile(path) || unReadPaths.includes(path)
+        return isFile(path) || willNotBeReadPaths.includes(path)
     }
     catch(e){
         return false
@@ -61,7 +62,7 @@ async function calculateCounts() {
     folderCount -= 1
     onlyFiles.forEach(async (f) => {
         f = await path.resolve(f)
-        if(!unReadPaths.includes(f)) {
+        if(!willNotBeReadPaths.includes(f)) {
             fileCount++ 
             totalSize += getSizeOfFile(f)
         }
@@ -69,7 +70,7 @@ async function calculateCounts() {
     })
     await onlyFiles.forEach(async (file) => {
         file = await path.resolve(file)
-        if(!unReadPaths.includes(file)) {
+        if(!willNotBeReadPaths.includes(file)) {
             lineCount += lineCountOfFile(file)
         }
     })
@@ -117,10 +118,25 @@ async function calculateFileExtensionStatistics() {
     })
 }
 
-function logFileExtensionStatistics() {
-    fileExtensionStatistics.forEach(item => {
-        console.log(`\n${chalk.green(item.lineCount)} ${chalk.blue("line")} (${chalk.cyan(getPercentageOfLines(item.lineCount).toFixed(2) + '%' )} of total lines) on ${chalk.green(item.count)} ${chalk.yellow(item.fe)} ${chalk.blue("file")} (${chalk.cyan(item.percentage + '%')} of all files), ${chalk.blue("Size:")} ${chalk.green(item.size.toFixed(8))} MB (${chalk.cyan(getPercentageOfSize(item.size).toFixed(2) + "%")} of total size)`)
-    })
+async function printFileExtensionStatistics() {
+    if(!tableOutput) {
+        fileExtensionStatistics.forEach(item => {
+            console.log(`\n${chalk.green(item.lineCount)} ${chalk.blue("line")} (${chalk.cyan(getPercentageOfLines(item.lineCount).toFixed(2) + '%' )} of total lines) on ${chalk.green(item.count)} ${chalk.yellow(item.fe)} ${chalk.blue("file")} (${chalk.cyan(item.percentage + '%')} of all files), ${chalk.blue("Size:")} ${chalk.green(item.size.toFixed(8))} MB (${chalk.cyan(getPercentageOfSize(item.size).toFixed(2) + "%")} of total size)`)
+        })
+    }
+    else {
+        console.log()
+        await printTable(
+            fileExtensionStatistics.map(item => {
+                return {
+                    "File extension": chalk.yellow(item.fe),
+                    "Count of files": `${chalk.green(item.count)} (${chalk.cyan(item.percentage + '%')} of all files)`,
+                    "Line Count": `${chalk.green(item.lineCount)} (${chalk.cyan(getPercentageOfLines(item.lineCount).toFixed(2) + '%')} of all lines)`,
+                    "Size":  `${chalk.green(item.size.toFixed(8) + 'MB')} (${chalk.cyan(getPercentageOfSize(item.size).toFixed(2) + '%')} of total size)`
+                }
+            })
+        )
+    }
 }
 
 async function output() {
@@ -134,21 +150,8 @@ async function output() {
     await console.log(`\n📂 ${chalk.green(folderCount)} ${chalk.blue("folder")};\n\n📄 ${chalk.green(lineCount)} ${chalk.blue("line")} in ${chalk.green(fileCount)} ${chalk.blue("file")};\n`)
     await console.log(`Total ${chalk.blue("size")} of files: ${chalk.green(totalSize.toFixed(8))} MB\n`)
     await console.log(chalk.green(uniqueFileExtensions.length) + chalk.blue(" file extensions: ") + chalk.yellow(...uniqueFileExtensions) + ";")
-    if(!tableOutput) { await logFileExtensionStatistics() }
-    if(tableOutput) {
-        console.log()
-        await printTable(
-            fileExtensionStatistics.map(item => {
-                return {
-                    "File extension": chalk.yellow(item.fe),
-                    "Count of files": `${chalk.green(item.count)} (${chalk.cyan(item.percentage + '%')} of all files)`,
-                    "Line Count": `${chalk.green(item.lineCount)} (${chalk.cyan(getPercentageOfLines(item.lineCount).toFixed(2) + '%')} of all lines)`,
-                    "Size":  `${chalk.green(item.size.toFixed(8) + 'MB')} (${chalk.cyan(getPercentageOfSize(item.size).toFixed(2) + '%')} of total size)`
-                }
-            })
-        )
-    }
-    await console.log(`\n⭐ inside ${chalk.yellow(givenPath)}\n`)
+    await printFileExtensionStatistics()
+    await console.log(`\n⭐ inside ${chalk.yellow(path.resolve(givenPath))}\n`)
 }
 
 async function main(stuff) {
@@ -165,9 +168,9 @@ async function main(stuff) {
         }
         else{
             await stuff.forEach(f => {
-                if(isFolder(f) && !unReadPaths.includes(f)){
+                if(isFolder(f) && !willNotBeReadPaths.includes(f)){
                     readFolder(f)
-                    unReadPaths.push(f)
+                    willNotBeReadPaths.push(f)
                 }
             })
             return main(paths)
@@ -178,44 +181,7 @@ async function main(stuff) {
 (async function setup(){
     givenPath = await argv.path
     if(!givenPath) {
-        console.log(`\n${chalk.yellow("HMSC (How Much Stuffs CLI) analyst for your files and folders")}\n`)
-        console.log(`📄 Check guide, examples and source code from here: ${chalk.green("https://github.com/Abdullah-V/HMSC")}\n`)
-
-        // --path
-        console.log(`${chalk.blue("--path")}\n`)
-        console.log("Give an absolute or relative path.".padStart(40))
-        console.log("If path is folder path, folder analyzes is is shown,".padStart(58))
-        console.log("if file path, shows number of lines and size of file.".padStart(59))
-        console.log("You can multiple this.\n".padStart(29))
-
-        // --exclude
-        console.log(`${chalk.blue("--exclude")}\n`)
-        console.log("Folders or files you wanted to be excluded.".padStart(49))
-        console.log("Give the relative or absolute path.".padStart(41))
-        console.log("You can multiple this.\n".padStart(29))
-
-        // --table
-        console.log(`${chalk.blue("--table")}\n`)
-        console.log("If given, output shown as table.\n".padStart(39))
-
-        // --exclude-hidden-files
-        console.log(`${chalk.blue("--exclude-hidden-files")}\n`)
-        console.log("Exclude hidden files.\n".padStart(28))
-
-        // --exclude-hidden-folders
-        console.log(`${chalk.blue("--exclude-hidden-folders")}\n`)
-        console.log("Exclude hidden folders.\n".padStart(30))
-
-        // --exclude-all-hiddens
-        console.log(`${chalk.blue("--exclude-all-hiddens")}\n`)
-        console.log("Exclude hidden files and folders.\n".padStart(40))
-
-        // --sort-by <key>
-        console.log(`${chalk.blue("--sort-by <key>")}\n`)
-        console.log("Sort output by <key>\n".padStart(27))
-        console.log(`Available keys: ${chalk.bold("count")}, ${chalk.bold("lineCount")}, ${chalk.bold("size")}\n`.padStart(72))
-        console.log("NOTE: Sorting is ascending by default. For descending sorting use --desc option.\n".padStart(87))
-
+        await printDocumentation()
         return false
     }
     if(argv.exclude){
@@ -228,7 +194,7 @@ async function main(stuff) {
         return path.resolve(p)
     })
 
-    await unReadPaths.push(...excludeds)
+    await willNotBeReadPaths.push(...excludeds)
 
     tableOutput = await "table" in argv
 

@@ -12,7 +12,7 @@
 
 ## 🔰 About
 
-HMSC (How Much Stuffs CLI) analyst for your files and folders
+HMSC (How Much Stuffs CLI) analyst for your files and folders. With HMSC you can see count of folders, count of files, file extensions, size of the files, etc. inside a folder.
 
 ## 📸 Screenshot
 
